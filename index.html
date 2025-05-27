@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<head lang="pt-br">
+  <meta charset="UTF-8" />
+  <title>Chatbot MAV</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" 
+    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer" 
+  />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<body>
+  <div id="chat-popup">
+    <button id="chat-button"><i class="fa-solid fa-comment"></i></button>
+  </div>
+  <div id="chat-window" style="display: none;">
+
+    <div id="chat-header">
+
+      <div id="chat-profile">
+        <div id="chat-profile-image">
+
+          <img src="http://www.mavba.org.br/images/ico/favicon.ico" alt="Logo da MavBa">
+
+        </div>
+        <span id="chat-profile-name">Mavba Bot</span>
+
+      </div>
+
+      <div id="chat-status">
+
+        <div id="chat-green-circle"></div>
+        <p>Online</p>
+
+      </div>
+
+    </div>
+
+    <div id="chat-messages"></div>
+    <hr>
+    <div id="chat-input">
+      <input type="text" id="user-input" placeholder="Digite um número..." />
+      <button id="send-button"><i class="fa-solid fa-paper-plane"></i></button>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
