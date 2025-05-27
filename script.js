@@ -91,7 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
   window.addEventListener('DOMContentLoaded', () => {
-    chatWindow.style.display = 'flex'; // Abre o chat
-    chatMessages.innerHTML = ''; // Limpa mensagens anteriores (se tiver)
+    chatWindow.style.display = 'flex';
+    chatMessages.innerHTML = '';
     addMessage("Olá, o que gostaria de saber sobre o grupo MAV?<br><br>1. O que é o grupo MAV<br>2. Pontos de coleta da MAV<br>3. Como apoiar a MAV<br>4. Projetos da MAV<br>5. Redes sociais do grupo MAV", "bot");
 });
