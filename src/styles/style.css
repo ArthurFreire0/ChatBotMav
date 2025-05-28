@@ -38,7 +38,7 @@
   width: 90vw;
   max-width: 400px;
   height: 540px;
-  background: url("./assets/background.png") no-repeat center center;
+  background: url("/src/assets/images/background.png") no-repeat center center;
   background-size: cover;
   border: 1px solid #ccc;
   border-radius: 10px;
