@@ -35,6 +35,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const chatWindow = document.getElementById("chat-window");
   const userInput = document.getElementById("user-input");
   const sendButton = document.getElementById("send-button");
+  /* Abraão */
+  const delayMessage = 1500;
 
   chatButton.addEventListener("click", () => {
     const isHidden = chatWindow.style.display === "none" || chatWindow.style.display === "";
@@ -42,7 +44,14 @@ document.addEventListener("DOMContentLoaded", () => {
     if (isHidden) {
       chatWindow.style.display = "flex";
       clearMessages();
-      showBotMessage("Olá, o que gostaria de saber sobre o grupo MAV?<br>1. O que é o grupo MAV<br>2. Pontos de coleta da MAV<br>3. Como apoiar a MAV<br>4. Projetos da MAV<br>5. Redes sociais do grupo MAV");
+
+      const initialIndicator = showTypingIndicator();
+      /* Abraão */
+      setTimeout( () => {
+        hideTypingIndicator(initialIndicator);
+        showBotMessage("Olá, o que gostaria de saber sobre o grupo MAV?<br>1. O que é o grupo MAV<br>2. Pontos de coleta da MAV<br>3. Como apoiar a MAV<br>4. Projetos da MAV<br>5. Redes sociais do grupo MAV");
+      },delayMessage);
+
     } else {
       chatWindow.style.display = "none";
     }
@@ -77,14 +86,25 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!value) return;
     showUserMessage(value);
     userInput.value = "";
+    
+    /* Abraão */
+    const typingIndicator = showTypingIndicator();
 
-    const resposta = respostas[value];
-    if (resposta) {
+  
+    setTimeout(() => {
+
+      hideTypingIndicator(typingIndicator);
+      const resposta = respostas[value];
+      if (resposta) {
       showBotMessage(resposta);
-    } else {
+      } else {
       showBotMessage("Opção inválida. Por favor, digite um número de 1 a 5.");
-    }
+      }
+
+    },delayMessage)
+
   }
+
 
   function clearMessages() {
     document.getElementById("chat-messages").innerHTML = "";
