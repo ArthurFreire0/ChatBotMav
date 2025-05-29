@@ -1,9 +1,3 @@
-/**
- * 
- * @returns {HTMLElement | null} 
- */
-
-/* Abraão */
 function showTypingIndicator() {
   const chatMessages = document.getElementById("chat-messages");
   if (!chatMessages) {
@@ -36,11 +30,6 @@ function showTypingIndicator() {
   chatMessages.scrollTop = chatMessages.scrollHeight;
   return indicatorContainer; 
 }
-
-/**
- * 
- * @param {HTMLElement} indicatorElement 
- */
 
 function hideTypingIndicator(indicatorElement) {
   if (indicatorElement && indicatorElement.parentNode) {
