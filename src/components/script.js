@@ -1,4 +1,12 @@
 document.addEventListener("DOMContentLoaded", () => {
+  const perguntas = {
+    1: "O que é o grupo MAV?",
+    2: "Pontos de coleta da MAV",
+    3: "Como apoiar a MAV",
+    4: "Projetos da MAV",
+    5: "Redes sociais do grupo MAV"
+  };
+
   const respostas = {
     1: "O Movimento Água é Vida, também conhecido como MAV, é uma Organização da Sociedade Civil (OSC), sem fins lucrativos (OSFL), que foi fundada no dia 21 de maio de 1997 Nossa missão é cuidar da água, da saúde e do meio ambiente, por meio de atividades representativas, educacionais e operacionais de reciclagem junto à comunidade.",
     2: `<strong>Pontos de Coleta da MAV:</strong><br><table border='1' style="width: 100%; font-size: 12px;">
@@ -35,8 +43,47 @@ document.addEventListener("DOMContentLoaded", () => {
   const chatWindow = document.getElementById("chat-window");
   const userInput = document.getElementById("user-input");
   const sendButton = document.getElementById("send-button");
-  /* Abraão */
+  
   const delayMessage = 1500;
+
+  function showMenu() {
+  const menuHtml = `
+    <p>Olá, o que gostaria de saber sobre o grupo MAV?</p>
+    <ul style="list-style:none; padding-left:0;">
+      <li><button class="option-btn" data-value="1">1. O que é o grupo MAV</button></li>
+      <li><button class="option-btn" data-value="2">2. Pontos de coleta da MAV</button></li>
+      <li><button class="option-btn" data-value="3">3. Como apoiar a MAV</button></li>
+      <li><button class="option-btn" data-value="4">4. Projetos da MAV</button></li>
+      <li><button class="option-btn" data-value="5">5. Redes sociais do grupo MAV</button></li>
+    </ul>
+  `;
+  showBotMessage(menuHtml);
+
+  document.querySelectorAll(".option-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const val = btn.getAttribute("data-value");
+      simulateUserChoice(val);
+    });
+  });
+}
+
+function simulateUserChoice(value) {
+  showUserMessage(perguntas[value] || value);
+  
+  const typingIndicator = showTypingIndicator();
+
+  setTimeout(() => {
+    hideTypingIndicator(typingIndicator);
+
+    const resposta = respostas[value];
+    if (resposta) {
+      showBotMessage(resposta);
+    } else {
+      showBotMessage("Opção inválida. Por favor, escolha um número de 1 a 5.");
+    }
+  }, delayMessage);
+}
+
 
   chatButton.addEventListener("click", () => {
     const isHidden = chatWindow.style.display === "none" || chatWindow.style.display === "";
@@ -44,12 +91,11 @@ document.addEventListener("DOMContentLoaded", () => {
     if (isHidden) {
       chatWindow.style.display = "flex";
       clearMessages();
-
+      
       const initialIndicator = showTypingIndicator();
-      /* Abraão */
       setTimeout( () => {
         hideTypingIndicator(initialIndicator);
-        showBotMessage("Olá, o que gostaria de saber sobre o grupo MAV?<br>1. O que é o grupo MAV<br>2. Pontos de coleta da MAV<br>3. Como apoiar a MAV<br>4. Projetos da MAV<br>5. Redes sociais do grupo MAV");
+        showMenu("Olá, o que gostaria de saber sobre o grupo MAV?<br>1. O que é o grupo MAV<br>2. Pontos de coleta da MAV<br>3. Como apoiar a MAV<br>4. Projetos da MAV<br>5. Redes sociais do grupo MAV");
       },delayMessage);
 
     } else {
@@ -86,19 +132,20 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!value) return;
     showUserMessage(value);
     userInput.value = "";
-    
-    /* Abraão */
+
     const typingIndicator = showTypingIndicator();
 
   
     setTimeout(() => {
 
       hideTypingIndicator(typingIndicator);
+
       const resposta = respostas[value];
       if (resposta) {
       showBotMessage(resposta);
       } else {
       showBotMessage("Opção inválida. Por favor, digite um número de 1 a 5.");
+      
       }
 
     },delayMessage)
@@ -106,12 +153,12 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-  function clearMessages() {
+  function clearMessages() { 
     document.getElementById("chat-messages").innerHTML = "";
   }
 });
   window.addEventListener('DOMContentLoaded', () => {
     chatWindow.style.display = 'flex';
-    chatMessages.innerHTML = '';
-    addMessage("Olá, o que gostaria de saber sobre o grupo MAV?<br><br>1. O que é o grupo MAV<br>2. Pontos de coleta da MAV<br>3. Como apoiar a MAV<br>4. Projetos da MAV<br>5. Redes sociais do grupo MAV", "bot");
+    clearMessages();
+    showMenu();
 });
