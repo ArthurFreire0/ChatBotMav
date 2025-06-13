@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
           <tr><td>Feira Produtiva - Centro de Abastecimento</td><td>Centro de Abastecimento</td><td>(75) 9118-8465</td></tr>
           <tr><td>CSU - Centro Social Urbano - Cidade Nova</td><td>R. Tostão - Cidade Nova</td><td>(75) 9143-9870</td></tr>  
         </table>`,
-    3: `Você pode ajudar o Grupo MAV por meio de doações que podem ser feitas pelo <a href="https://www.paypal.com/donate/?cmd=_s-xclick&hosted_button_id=JKCRL4DF4B26N&source=url" target="_blank" rel="noopener noreferrer" style="color: #003d66">PAYPAL`,
+    3: `Você pode ajudar o Grupo MAV por meio de doações que podem ser feitas pelo <a href="https://www.paypal.com/donate/?cmd=_s-xclick&hosted_button_id=JKCRL4DF4B26N&source=url" target="_blank" class="no-underline" rel="noopener noreferrer" style="color: #003d66"><i class="fa-brands fa-paypal"></i> PAYPAL`,
     4: `PROJETO: ÁGUA VIVA Reaproveitamento de óleo vegetal e gorduras residuais<br>
         PROJETO: ÁRVORE VIVA<br>
         PROJETO: PEDAGÓGICO<br>
