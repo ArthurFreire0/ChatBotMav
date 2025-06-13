@@ -315,6 +315,6 @@ hr {
   background-color: #005c99;
 }
 
-li {
+.no-underline {
   text-decoration: none !important;
 }
