@@ -315,6 +315,12 @@ hr {
   background-color: #005c99;
 }
 
-.no-underline {
+a {
+  color: inherit !important;
   text-decoration: none !important;
+}
+
+a:hover {
+  color: #23adde !important;
+  text-decoration: underline !important;
 }
