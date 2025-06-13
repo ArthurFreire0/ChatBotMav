@@ -28,12 +28,13 @@
 #chat-button {
   outline: none;
   border: none;
-  border-radius: 50px;
+  border-radius: 40px;
+  width: 3.5em;
   background-color: #23adde;
   padding: 20px;
   cursor: pointer;
   color: #fff;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
   font-size: 1.2em;
   transition: .3s ease-in;
 }
