@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const messages = document.getElementById("chat-messages");
     const botMsg = document.createElement("div");
     botMsg.className = "bot";
-    botMsg.innerHTML = msg;
+    botMsg.innerHTML = msg.replace(/\n/g, "<br>");
     messages.appendChild(botMsg);
     messages.scrollTop = messages.scrollHeight;
   }
