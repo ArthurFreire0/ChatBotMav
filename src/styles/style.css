@@ -295,6 +295,9 @@ hr {
   }
 }
 
+.no-underline {
+  text-decoration: none !important;
+}
 .option-btn {
   padding: 10px 15px;
   background-color: #003d66;

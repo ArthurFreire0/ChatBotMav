@@ -33,9 +33,22 @@ document.addEventListener("DOMContentLoaded", () => {
         Esses são os quatro principais projetos que a MAV vem realizando. Se quiser saber mais sobre eles, basta acessar a aba <a href="http://www.mavba.org.br/conteudo.asp?id=1" target="_blank" rel="noopener noreferrer" style="color: #003d66">“Quem Somos”`,
     5: `<strong>Redes sociais da MAV:</strong><br>
         <ul style="padding-left: 20px; font-size: 14px;">
-        <li><a href="https://pt-br.facebook.com/movimentoaguaevida/" target="_blank" rel="noopener noreferrer">Facebook</a></li>
-        <li><a href="https://www.instagram.com/movimentoaguaevida/?hl=pt-br" target="_blank" rel="noopener noreferrer">Instagram</a></li>
-        <li><a href="https://www.youtube.com/channel/UCUmmZQeeIjkGEbOSmip6r3g/videos" target="_blank" rel="noopener noreferrer">YouTube</a></li>
+        <li><a href="https://pt-br.facebook.com/movimentoaguaevida/" target="_blank" rel="noopener noreferrer" class="no-underline">
+    <i class="fa-brands fa-square-facebook" style="text-decoration: none;"></i>
+    Facebook
+  </a>
+</li>
+        <li><a href="https://www.instagram.com/movimentoaguaevida/?hl=pt-br" target="_blank" rel="noopener noreferrer" class="no-underline">
+  <i class="fa-brands fa-square-instagram"></i>
+  Instagram
+</a>
+</li>
+<li>
+  <a href="https://www.youtube.com/channel/UCUmmZQeeIjkGEbOSmip6r3g/videos" target="_blank" rel="noopener noreferrer" class="no-underline">
+    <i class="fa-brands fa-square-youtube"></i>
+    YouTube
+  </a>
+</li>
       </ul>`
   };
 
