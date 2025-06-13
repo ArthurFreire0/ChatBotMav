@@ -28,12 +28,13 @@
 #chat-button {
   outline: none;
   border: none;
-  border-radius: 50px;
+  border-radius: 40px;
+  width: 3.5em;
   background-color: #23adde;
   padding: 20px;
   cursor: pointer;
   color: #fff;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
   font-size: 1.2em;
   transition: .3s ease-in;
 }
@@ -70,10 +71,39 @@
 }
 
 #chat-header {
-  background-color: #23adde;
-  color: #fff;
-  padding: 12px;
-  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #003d66;
+  padding: 5px 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  color: white;
+}
+
+#chat-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+#chat-logo {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+#chat-controls button {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  margin-left: 8px;
+}
+
+#chat-controls button:hover {
+  color: #ddd;
 }
 
 #chat-profile {
@@ -223,6 +253,7 @@ hr {
 
 @media screen and (max-width: 480px) {
   #chat-window {
+    
     width: 95vw;
     height: 90vh;
     right: 10px;
@@ -267,4 +298,19 @@ hr {
 
 .no-underline {
   text-decoration: none !important;
+}
+.option-btn {
+  padding: 10px 15px;
+  background-color: #003d66;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  text-align: left;
+  font-size: 14px;
+  transition: background 0.3s;
+}
+
+.option-btn:hover {
+  background-color: #005c99;
 }

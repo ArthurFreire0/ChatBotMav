@@ -56,64 +56,86 @@ document.addEventListener("DOMContentLoaded", () => {
   const chatWindow = document.getElementById("chat-window");
   const userInput = document.getElementById("user-input");
   const sendButton = document.getElementById("send-button");
-  
+
   const delayMessage = 1500;
+  let fullyClosed = false;
 
   function showMenu() {
-  const menuHtml = `
-    <p>Olá, o que gostaria de saber sobre o grupo MAV?</p>
-    <ul style="list-style:none; padding-left:0;">
-      <li><button class="option-btn" data-value="1">1. O que é o grupo MAV</button></li>
-      <li><button class="option-btn" data-value="2">2. Pontos de coleta da MAV</button></li>
-      <li><button class="option-btn" data-value="3">3. Como apoiar a MAV</button></li>
-      <li><button class="option-btn" data-value="4">4. Projetos da MAV</button></li>
-      <li><button class="option-btn" data-value="5">5. Redes sociais do grupo MAV</button></li>
-    </ul>
-  `;
-  showBotMessage(menuHtml);
+    const menuHtml = `
+      <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px;">
+        <div style="flex: 1; min-width: 200px;">
+          <p><strong>Olá! Bem-vindo ao FAQ da MAV (Movimento Água é Vida)</strong></p>
+          <p>Selecione a opção desejada ao lado:</p>
+        </div>
+        <div style="flex: 1; min-width: 200px;">
+          <ul style="list-style:none; padding-left:0; display: flex; flex-direction: column; gap: 8px;">
+            <li><button class="option-btn" data-value="1">1. O que é o grupo MAV</button></li>
+            <li><button class="option-btn" data-value="2">2. Pontos de coleta da MAV</button></li>
+            <li><button class="option-btn" data-value="3">3. Como apoiar a MAV</button></li>
+            <li><button class="option-btn" data-value="4">4. Projetos da MAV</button></li>
+            <li><button class="option-btn" data-value="5">5. Redes sociais do grupo MAV</button></li>
+          </ul>
+        </div>
+      </div>
+    `;
+    showBotMessage(menuHtml);
 
-  document.querySelectorAll(".option-btn").forEach(btn => {
-    btn.addEventListener("click", () => {
-      const val = btn.getAttribute("data-value");
-      simulateUserChoice(val);
+    document.querySelectorAll(".option-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const val = btn.getAttribute("data-value");
+        simulateUserChoice(val);
+      });
     });
-  });
-}
+  }
 
-function simulateUserChoice(value) {
-  showUserMessage(perguntas[value] || value);
-  
-  const typingIndicator = showTypingIndicator();
+  function simulateUserChoice(value) {
+    showUserMessage(perguntas[value] || value);
 
-  setTimeout(() => {
-    hideTypingIndicator(typingIndicator);
+    const typingIndicator = showTypingIndicator();
 
-    const resposta = respostas[value];
-    if (resposta) {
-      showBotMessage(resposta);
-    } else {
-      showBotMessage("Opção inválida. Por favor, escolha um número de 1 a 5.");
-    }
-  }, delayMessage);
-}
-
+    setTimeout(() => {
+      hideTypingIndicator(typingIndicator);
+      const resposta = respostas[value];
+      if (resposta) {
+        showBotMessage(resposta);
+      } else {
+        showBotMessage("Opção inválida. Por favor, escolha um número de 1 a 5.");
+      }
+    }, delayMessage);
+  }
 
   chatButton.addEventListener("click", () => {
     const isHidden = chatWindow.style.display === "none" || chatWindow.style.display === "";
-
     if (isHidden) {
       chatWindow.style.display = "flex";
-      clearMessages();
-      
-      const initialIndicator = showTypingIndicator();
-      setTimeout( () => {
-        hideTypingIndicator(initialIndicator);
-        showMenu("Olá, o que gostaria de saber sobre o grupo MAV?<br>1. O que é o grupo MAV<br>2. Pontos de coleta da MAV<br>3. Como apoiar a MAV<br>4. Projetos da MAV<br>5. Redes sociais do grupo MAV");
-      },delayMessage);
+      if (fullyClosed) {
+        clearMessages();
+      }
+
+      fullyClosed = false;
+
+      const hasMessages = document.getElementById("chat-messages").children.length > 0;
+      if (!hasMessages) {
+        const initialIndicator = showTypingIndicator();
+        setTimeout(() => {
+          hideTypingIndicator(initialIndicator);
+          showMenu();
+        }, delayMessage);
+      }
 
     } else {
       chatWindow.style.display = "none";
     }
+  });
+
+  document.getElementById("minimize-btn").addEventListener("click", () => {
+    chatWindow.style.display = "none";
+  });
+
+  document.getElementById("close-btn").addEventListener("click", () => {
+    chatWindow.style.display = "none";
+    clearMessages();
+    fullyClosed = true;
   });
 
   sendButton.addEventListener("click", sendMessage);
@@ -148,30 +170,20 @@ function simulateUserChoice(value) {
 
     const typingIndicator = showTypingIndicator();
 
-  
     setTimeout(() => {
-
       hideTypingIndicator(typingIndicator);
-
       const resposta = respostas[value];
       if (resposta) {
-      showBotMessage(resposta);
+        showBotMessage(resposta);
       } else {
-      showBotMessage("Opção inválida. Por favor, digite um número de 1 a 5.");
-      
+        showBotMessage("Opção inválida. Por favor, digite um número de 1 a 5.");
       }
-
-    },delayMessage)
-
+    }, delayMessage);
   }
 
-
-  function clearMessages() { 
+  function clearMessages() {
     document.getElementById("chat-messages").innerHTML = "";
   }
-});
-  window.addEventListener('DOMContentLoaded', () => {
-    chatWindow.style.display = 'flex';
-    clearMessages();
-    showMenu();
+
+  chatWindow.style.display = "none";
 });
