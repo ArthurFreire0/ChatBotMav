@@ -268,3 +268,7 @@ hr {
 .no-underline {
   text-decoration: none !important;
 }
+
+li {
+  text-decoration: none !important;
+}
